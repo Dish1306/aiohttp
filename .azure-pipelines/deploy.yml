@@ -17,13 +17,15 @@ resources:
   repositories:
   - repository: templates
     type: github
-    name: aio-libs/azure-pipelines
+    name: Dish1306/azure-pipelines
     endpoint: aio-libs
 
 stages:
 - template: stage-lint.yml
 
 - template: stage-test.yml
+
+- template: templates/stage-aarch64.yml@templates
 
 - stage: build
   displayName: 'Build'
@@ -140,6 +142,8 @@ stages:
                 make cythonize
                 python setup.py bdist_wheel
               displayName: 'Make wheel'
+              
+- template: templates/stage-aarch64-deploy.yml@templates              
 
 - template: templates/stage-publish.yml@templates
   parameters:
