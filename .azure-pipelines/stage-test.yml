@@ -42,22 +42,11 @@ stages:
           python.version: '3.7'
           no_extensions: ''
           image: 'windows-latest'
-        Py38-Cython-Win:
-          python.version: '3.8'
-          no_extensions: ''
-          image: 'windows-latest'
         Py36-Cython-Mac:
           python.version: '3.6'
           no_extensions: ''
           image: 'macos-latest'
-        Py37-Cython-Mac:
-          python.version: '3.7'
-          no_extensions: ''
-          image: 'macos-latest'
-        Py38-Cython-Mac:
-          python.version: '3.8'
-          no_extensions: ''
-          image: 'macos-latest'
+          
     pool:
       vmImage: '$(image)'
 
