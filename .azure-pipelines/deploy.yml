@@ -26,6 +26,8 @@ stages:
 - template: stage-test.yml
 
 - template: templates/stage-aarch64.yml@templates
+  parameters:
+    step: make cythonize && $PYTHON -m pip install -r requirements/dev.txt && \
 
 - stage: build
   displayName: 'Build'
@@ -143,7 +145,9 @@ stages:
                 python setup.py bdist_wheel
               displayName: 'Make wheel'
               
-- template: templates/stage-aarch64-deploy.yml@templates              
+- template: templates/stage-aarch64-deploy.yml@templates
+  parameters:
+    step: make cythonize && \              
 
 - template: templates/stage-publish.yml@templates
   parameters:
